@@ -3,7 +3,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
 import HomeAppBar from './components/HomeAppBar';
-// import Home from './sections/Home';
+import Home from './sections/Home';
 
 const theme = createTheme({
   palette: {
@@ -14,10 +14,9 @@ const theme = createTheme({
 
 function App() {
   return (
-    <div className="App">
-
-        <HomeAppBar />
-
+    <div className="App"> 
+      <HomeAppBar />
+      <Home />
     </div>
   );
 }
