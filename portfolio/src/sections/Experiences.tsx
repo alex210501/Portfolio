@@ -75,6 +75,7 @@ const ContentContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  padding-right: 0.5em;
   gap: 2em;
 `;
 
@@ -84,7 +85,7 @@ const CompanyLogo = styled.img`
   object-fit: contain;
   width: 100%;
   height: 100%;
-  min-width: 10%;
+  min-width: 100px;
 `;
 
 function LocationAndWebsite({
