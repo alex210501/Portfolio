@@ -43,7 +43,7 @@ interface skillsProps {
 }
 
 const AccordionStyled = styled(Accordion)`
-  width: 70%;
+  width: 60%;
 `;
 
 const Container = styled.div`
@@ -75,7 +75,7 @@ const ContentContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5em;
+  gap: 2em;
 `;
 
 const CompanyLogo = styled.img`
@@ -84,7 +84,7 @@ const CompanyLogo = styled.img`
   object-fit: contain;
   width: 100%;
   height: 100%;
-  min-width: 30%;
+  min-width: 10%;
 `;
 
 function LocationAndWebsite({
@@ -139,14 +139,16 @@ function ExperienceAccordionDetails({ info }: accordionProps) {
   return (
     <AccordionDetails>
       <ContentContainer>
-        <div style={{ flex: 2 }}>
+        <div style={{ flex: 3 }}>
           <LocationAndWebsite
             location={info.location}
             companyWebsite={info.companyWebsite}
           />
           <JobDescriptionContainer>{info.description}</JobDescriptionContainer>
         </div>
-        {info.companyLogo && <CompanyLogo src={info.companyLogo} alt={info.companyLogo} />}
+        {info.companyLogo && (
+          <CompanyLogo src={info.companyLogo} alt={info.companyLogo} />
+        )}
       </ContentContainer>
       <Skills skills={info.skills} />
     </AccordionDetails>
