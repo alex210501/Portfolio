@@ -13,6 +13,10 @@ interface NavigationBarProps {
 
 const StyledLink = styled.h2`
   margin: 10px;
+  
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function HomeAppBar({

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { createTheme } from "@mui/material";
+import { Fab, createTheme } from "@mui/material";
 
 import "./App.css";
 import About from "./sections/About";
@@ -8,6 +8,7 @@ import Credits from "./sections/Credits";
 import Experiences from "./sections/Experiences";
 import HomeAppBar from "./components/HomeAppBar";
 import Home from "./sections/Home";
+import GoTopButton from "./components/GoTopButton";
 
 const theme = createTheme({
   palette: {
@@ -22,18 +23,21 @@ function App() {
   let contactSectionRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="App">
-      <HomeAppBar
-        aboutSectionRef={aboutSectionRef}
-        experiencesSectionRef={experiencesSectionRef}
-        contactSectionRef={contactSectionRef}
-      />
-      <Home innerRef={homeSectionRef} />
-      <About innerRef={aboutSectionRef} />
-      <Experiences innerRef={experiencesSectionRef} />
-      <Contact innerRef={contactSectionRef} />
-      <Credits />
+    <div>
+      <div className="App">
+        <HomeAppBar
+          aboutSectionRef={aboutSectionRef}
+          experiencesSectionRef={experiencesSectionRef}
+          contactSectionRef={contactSectionRef}
+        />
+        <Home innerRef={homeSectionRef} />
+        <About innerRef={aboutSectionRef} />
+        <Experiences innerRef={experiencesSectionRef} />
+        <Contact innerRef={contactSectionRef} />
+        <Credits />
+      </div>
     </div>
+      
   );
 }
 
