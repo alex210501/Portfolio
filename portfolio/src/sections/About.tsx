@@ -1,7 +1,8 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import SkillBox from "../components/SkillBox";
-import StyledSection from "../styles/StyledSection";
+import Section, { labeledSectionProps } from "./Sections";
 
 const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
@@ -21,9 +22,9 @@ const SkillBoxContainer = styled.div`
   gap: 2em;
 `;
 
-export default function About() {
+export default function About({ innerRef }: labeledSectionProps) {
   return (
-    <StyledSection>
+    <Section innerRef={innerRef}>
       <Container>
         <div style={{ marginBottom: "5em" }}>
           <h1>About me</h1>
@@ -50,6 +51,6 @@ export default function About() {
           />
         </SkillBoxContainer>
       </Container>
-    </StyledSection>
+    </Section>
   );
 }

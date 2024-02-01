@@ -7,7 +7,7 @@ import { ArrowOutward, LocationOnOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 
 import amazonLogo from "../images/amazon-logo.png";
-import StyledSection from "../styles/StyledSection";
+import Section, { labeledSectionProps } from "./Sections";
 
 // Define the type for the callback function
 type OnClickCallback = () => void;
@@ -171,7 +171,7 @@ function ExperienceAccordion({ info }: accordionProps) {
   );
 }
 
-function Experiences() {
+function Experiences({ innerRef }: labeledSectionProps) {
   const lorem =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   const obj: ExperienceInfo = {
@@ -198,13 +198,13 @@ function Experiences() {
   };
 
   return (
-    <StyledSection>
+    <Section innerRef={innerRef}>
       <Container>
         <h1>Experiences</h1>
         <ExperienceAccordion info={obj} />
         <ExperienceAccordion info={obj2} />
       </Container>
-    </StyledSection>
+    </Section>
   );
 }
 
