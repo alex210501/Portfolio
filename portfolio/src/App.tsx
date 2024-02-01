@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
+import Experiences from './sections/Experiences';
 import HomeAppBar from './components/HomeAppBar';
 import Home from './sections/Home';
 
@@ -17,6 +18,7 @@ function App() {
     <div className="App"> 
       <HomeAppBar />
       <Home />
+      <Experiences />
     </div>
   );
 }
