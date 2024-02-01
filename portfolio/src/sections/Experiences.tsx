@@ -3,7 +3,7 @@ import { Box, Chip, Icon, Link } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import { ArrowOutward, LocationOnOutlined, Padding } from "@mui/icons-material";
+import { ArrowOutward, LocationOnOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 
 import amazonLogo from "../images/amazon-logo.png";
@@ -146,7 +146,7 @@ function ExperienceAccordionDetails({ info }: accordionProps) {
           />
           <JobDescriptionContainer>{info.description}</JobDescriptionContainer>
         </div>
-        {info.companyLogo && <CompanyLogo src={info.companyLogo} alt="aie" />}
+        {info.companyLogo && <CompanyLogo src={info.companyLogo} alt={info.companyLogo} />}
       </ContentContainer>
       <Skills skills={info.skills} />
     </AccordionDetails>
