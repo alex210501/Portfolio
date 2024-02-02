@@ -10,8 +10,9 @@ const StyledContainer = styled.div`
   align-items: center;
   align-content: center;
   justify-content: space-evenly;
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  margin: auto;
 `;
 
 const StyledPresentation = styled.div`
