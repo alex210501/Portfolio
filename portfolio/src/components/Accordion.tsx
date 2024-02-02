@@ -37,7 +37,7 @@ const ContentContainer = styled.div`
   border-radius: 1em;
 `;
 
-export function AccordionSummary2({
+export function AccordionSummary({
   children,
   className,
   onClick,
@@ -49,7 +49,7 @@ export function AccordionSummary2({
   );
 }
 
-export function AccordionDetails2({
+export function AccordionDetails({
   isActive,
   className,
   children,
@@ -71,6 +71,6 @@ export function AccordionDetails2({
   );
 }
 
-export function Accordion2({ children, className }: accordionProps) {
+export function Accordion({ children, className }: accordionProps) {
   return <div className={className}>{children}</div>;
 }

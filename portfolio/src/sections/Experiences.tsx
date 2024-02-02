@@ -6,9 +6,9 @@ import styled from "styled-components";
 import amazonLogo from "../images/amazon-logo.png";
 import Section, { labeledSectionProps } from "./Sections";
 import {
-  Accordion2,
-  AccordionDetails2,
-  AccordionSummary2,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
 } from "../components/Accordion";
 
 // Define the type for the callback function
@@ -53,13 +53,13 @@ interface skillsProps {
   skills: string[];
 }
 
-const AccordionStyled = styled(Accordion2)`
+const AccordionStyled = styled(Accordion)`
   width: 60%;
   margin-bottom: 1em;
   border: 0;
 `;
 
-const StyledAccordionSummary = styled(AccordionSummary2)`
+const StyledAccordionSummary = styled(AccordionSummary)`
   border-radius: 1em;
   background-color: orange;
   display: flex;
@@ -138,7 +138,7 @@ function Skills({ skills }: skillsProps) {
   );
 }
 
-function ExperienceAccordionSummary2({ info, onClick }: accordionSummaryProps) {
+function ExperienceAccordionSummary({ info, onClick }: accordionSummaryProps) {
   return (
     <StyledAccordionSummary onClick={onClick}>
       <h3>
@@ -156,12 +156,12 @@ function ExperienceAccordionSummary2({ info, onClick }: accordionSummaryProps) {
   );
 }
 
-function ExperienceAccordionDetails2({
+function ExperienceAccordionDetails({
   info,
   isExpanded,
 }: accordionDetailsProps) {
   return (
-    <AccordionDetails2 isActive={isExpanded}>
+    <AccordionDetails isActive={isExpanded}>
       <ContentContainer>
         <div style={{ flex: 3 }}>
           <LocationAndWebsite
@@ -175,7 +175,7 @@ function ExperienceAccordionDetails2({
         )}
       </ContentContainer>
       <Skills skills={info.skills} />
-    </AccordionDetails2>
+    </AccordionDetails>
   );
 }
 
@@ -188,13 +188,13 @@ function ExperienceAccordionItem2({ info }: accordionItemProps) {
 
   return (
     <div>
-      <ExperienceAccordionSummary2 info={info} onClick={onClickHandler} />
-      <ExperienceAccordionDetails2 info={info} isExpanded={isExpanded} />
+      <ExperienceAccordionSummary info={info} onClick={onClickHandler} />
+      <ExperienceAccordionDetails info={info} isExpanded={isExpanded} />
     </div>
   );
 }
 
-function ExperienceAccordion2({ infos }: accordionProps) {
+function ExperienceAccordion({ infos }: accordionProps) {
   return (
     <AccordionStyled>
       {infos.map((info) => {
@@ -234,7 +234,7 @@ function Experiences({ innerRef }: labeledSectionProps) {
     <Section innerRef={innerRef}>
       <Container>
         <h1>Experiences</h1>
-        <ExperienceAccordion2 infos={[obj, obj2, obj]} />
+        <ExperienceAccordion infos={[obj, obj2, obj]} />
       </Container>
     </Section>
   );
