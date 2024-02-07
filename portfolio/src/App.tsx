@@ -1,19 +1,15 @@
 import React, { useRef } from "react";
-import { createTheme } from "@mui/material";
+import { ThemeProvider } from "styled-components";
 
 import "./App.css";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Credits from "./sections/Credits";
 import Experiences from "./sections/Experiences";
+import { GlobalStyles } from "./styles/GlobalStyles";
 import HomeAppBar from "./components/HomeAppBar";
 import Home from "./sections/Home";
-
-const theme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
+import { darkTheme } from "./styles/Theme";
 
 function App() {
   let homeSectionRef = useRef<HTMLDivElement | null>(null);
@@ -23,7 +19,8 @@ function App() {
 
   return (
     <div>
-      <div className="App">
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyles />
         <HomeAppBar
           homeSectionRef={homeSectionRef}
           aboutSectionRef={aboutSectionRef}
@@ -35,8 +32,8 @@ function App() {
         <Experiences innerRef={experiencesSectionRef} />
         <Contact innerRef={contactSectionRef} />
         <Credits />
-      </div>
-    </div>   
+      </ThemeProvider>
+    </div>
   );
 }
 

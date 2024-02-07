@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 import AppBarAvatar from "./AppBarAvatar";
 
@@ -25,7 +25,7 @@ const StyledToolbar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: white;
+  background: ${({ theme }) => theme.colors.appBar};;
   z-index: 10;
 `;
 
@@ -40,6 +40,7 @@ function HomeAppBar({
   experiencesSectionRef,
   contactSectionRef,
 }: NavigationBarProps) {
+    console.log(useTheme());
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });

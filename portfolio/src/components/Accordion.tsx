@@ -21,7 +21,8 @@ interface accordionDetailsProps {
 const AccordionSummaryStyled = styled.div`
   border: 1px solid grey;
   border-radius: 1em;
-  padding: 1em;
+  padding: 0.5em;
+  background: ${({ theme }) => theme.colors.experienceSummary};
 `;
 
 const AccordionContentStyled = styled.div<{ height: string }>`
@@ -35,6 +36,7 @@ const ContentContainer = styled.div`
   margin-top: 1em;
   border: 1px solid grey;
   border-radius: 1em;
+  background: ${({ theme }) => theme.colors.experienceDetails};
 `;
 
 export function AccordionSummary({

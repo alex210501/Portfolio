@@ -61,9 +61,7 @@ const AccordionStyled = styled(Accordion)`
 
 const StyledAccordionSummary = styled(AccordionSummary)`
   border-radius: 1em;
-  background-color: orange;
   display: flex;
-  padding: 1em;
 `;
 
 const Container = styled.div`
@@ -79,7 +77,7 @@ const LocationWebsiteContainer = styled.div`
   align-items: center;
 `;
 
-const JobDescriptionContainer = styled.div`
+const JobDescriptionContainer = styled.p`
   text-align: justify;
   margin-bottom: 1em;
 `;
@@ -108,6 +106,10 @@ const CompanyLogo = styled.img`
   min-width: 100px;
 `;
 
+const StyledChip = styled(Chip)`
+  background-color: ${({ theme }) => theme.colors.chip};
+`;
+
 function LocationAndWebsite({
   location,
   companyWebsite,
@@ -132,7 +134,7 @@ function Skills({ skills }: skillsProps) {
   return (
     <SkillsContainer>
       {skills.map((skill) => {
-        return <Chip label={skill} />;
+        return <StyledChip label={skill} />;
       })}
     </SkillsContainer>
   );

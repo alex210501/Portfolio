@@ -29,12 +29,16 @@ const StyledPresentationSpecialization = styled.h2`
   font-size: 1em;
 `;
 
+const StyledName = styled.strong`
+  color: ${({ theme }) => theme.colors.homeName};
+`;
+
 function Presentation() {
   return (
     <StyledPresentation>
       <StyledPresentationText>Hi,</StyledPresentationText>
       <StyledPresentationText>
-        My name is <strong>Alejandro</strong>
+        My name is <StyledName>Alejandro</StyledName>
       </StyledPresentationText>
       <StyledPresentationText>
         Software Engineer @ Datadog
