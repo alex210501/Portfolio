@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
 import "./App.css";
+import { AppContext } from "./utils/Context";
+import cfg from "./utils/ConfigLoader";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Experiences from "./sections/Experiences";
@@ -19,17 +21,19 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
-        <GlobalStyles />
-        <HomeAppBar
-          homeSectionRef={homeSectionRef}
-          aboutSectionRef={aboutSectionRef}
-          experiencesSectionRef={experiencesSectionRef}
-          contactSectionRef={contactSectionRef}
-        />
-        <Home innerRef={homeSectionRef} />
-        <About innerRef={aboutSectionRef} />
-        <Experiences innerRef={experiencesSectionRef} />
-        <Contact innerRef={contactSectionRef} />
+        <AppContext.Provider value={cfg}>
+            <GlobalStyles />
+            <HomeAppBar
+            homeSectionRef={homeSectionRef}
+            aboutSectionRef={aboutSectionRef}
+            experiencesSectionRef={experiencesSectionRef}
+            contactSectionRef={contactSectionRef}
+            />
+            <Home innerRef={homeSectionRef} />
+            <About innerRef={aboutSectionRef} />
+            <Experiences innerRef={experiencesSectionRef} />
+            <Contact innerRef={contactSectionRef} />
+        </AppContext.Provider>
       </ThemeProvider>
     </div>
   );

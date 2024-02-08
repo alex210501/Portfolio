@@ -131,3 +131,6 @@ dist
 
 # DSStore
 .DS_Store
+
+# Config folder
+src/cfg/
