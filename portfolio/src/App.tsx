@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
 import "./App.css";
@@ -11,12 +11,17 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import HomeAppBar from "./components/HomeAppBar";
 import Home from "./sections/Home";
 import { darkTheme } from "./styles/Theme";
+import InfoBanner from "./components/InfoBanner";
+
+const inDevelopment = true;
+const inDevelopmentMessage = "This website is currently under development.";
 
 function App() {
   const homeSectionRef = useRef<HTMLDivElement | null>(null);
   const aboutSectionRef = useRef<HTMLDivElement | null>(null);
   const experiencesSectionRef = useRef<HTMLDivElement | null>(null);
   const contactSectionRef = useRef<HTMLDivElement | null>(null);
+  const [displayInfoBanner, setInfoBanner] = useState(inDevelopment);
 
   return (
     <div>
@@ -29,6 +34,7 @@ function App() {
             experiencesSectionRef={experiencesSectionRef}
             contactSectionRef={contactSectionRef}
             />
+            {displayInfoBanner && <InfoBanner onClick={() => setInfoBanner(false)} message={inDevelopmentMessage} />}
             <Home innerRef={homeSectionRef} />
             <About innerRef={aboutSectionRef} />
             <Experiences innerRef={experiencesSectionRef} />

@@ -134,4 +134,5 @@ dist
 
 # Config folder
 cfg/
-images/
+*/public/images/
+*/build/

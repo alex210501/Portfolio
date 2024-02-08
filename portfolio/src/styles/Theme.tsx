@@ -7,6 +7,8 @@ const colors = {
   orange: '#f79c30',
   cantaloupe: '#fda172',
   blackPearl: '#151e27',
+  infoBlock: '#00549d',
+  infoBorder: '#89b9e8',
 };
 
 export const darkTheme = {
@@ -20,5 +22,7 @@ export const darkTheme = {
     chip: colors.cantaloupe,
     experienceSummary: '#24225d',
     experienceDetails: colors.earlyBirdPurple,
+    infoBlock: colors.infoBlock,
+    infoBorder: colors.infoBorder,
   }
 };
