@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { ThemeProvider } from "styled-components";
 
 import "./App.css";
@@ -13,10 +13,10 @@ import Home from "./sections/Home";
 import { darkTheme } from "./styles/Theme";
 
 function App() {
-  let homeSectionRef = useRef<HTMLDivElement | null>(null);
-  let aboutSectionRef = useRef<HTMLDivElement | null>(null);
-  let experiencesSectionRef = useRef<HTMLDivElement | null>(null);
-  let contactSectionRef = useRef<HTMLDivElement | null>(null);
+  const homeSectionRef = useRef<HTMLDivElement | null>(null);
+  const aboutSectionRef = useRef<HTMLDivElement | null>(null);
+  const experiencesSectionRef = useRef<HTMLDivElement | null>(null);
+  const contactSectionRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div>

@@ -1,35 +1,36 @@
 import * as cfg from "../cfg/config.json";
 
-export interface Skillbox {
+export interface SkillBoxInfo {
   title: string;
   description: string;
   subtitle?: string;
   skills?: string[];
 }
 
-export interface Home {
+export interface HomeInfo {
   name: string;
   currentPosition: string;
-  subtitle: string;
+  specialization: string;
 }
 
-export interface About {
+export interface AboutInfo {
   description: string;
-  skillbox?: Skillbox[];
+  skillbox?: SkillBoxInfo[];
 }
 
-export interface Experience {
+export interface ExperienceInfo {
+  current: boolean;
   title: string;
   company: string;
   dates: string;
   description?: string;
   location?: string;
   website?: string;
-  picture?: string;
+  logo?: string;
   skills?: string[];
 }
 
-export interface Contact {
+export interface ContactInfo {
   text: string;
 }
 
@@ -37,10 +38,10 @@ export interface Config {
   email: string;
   linkedin: string;
   github: string;
-  home: Home;
-  about: About;
-  experiences: Experience[];
-  contact: Contact;
+  home: HomeInfo;
+  about: AboutInfo;
+  experiences: ExperienceInfo[];
+  contact: ContactInfo;
 }
 
 export default cfg as Config;

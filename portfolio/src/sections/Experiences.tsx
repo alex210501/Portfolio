@@ -1,52 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Chip, Icon, Link } from "@mui/material";
 import { ArrowOutward, LocationOnOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 
-import amazonLogo from "../images/amazon-logo.png";
 import Section, { labeledSectionProps } from "./Sections";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
 } from "../components/Accordion";
+import { AppContext } from "../utils/Context";
+import { ExperienceInfo } from "../utils/ConfigLoader";
 
 // Define the type for the callback function
 type OnClickCallback = () => void;
 
-interface ExperienceInfo {
-  current: boolean;
-  jobTitle: string;
-  companyName: string;
-  companyWebsite: string;
-  companyLogo: string | null;
-  location: string;
-  date: string;
-  description: string;
-  skills: string[];
-}
-
-interface accordionProps {
-  infos: ExperienceInfo[];
-}
-
 interface accordionItemProps {
-  info: ExperienceInfo;
+  infos: ExperienceInfo;
 }
 
 interface accordionSummaryProps {
-  info: ExperienceInfo;
+  infos: ExperienceInfo;
   onClick: OnClickCallback;
 }
 
 interface accordionDetailsProps {
-  info: ExperienceInfo;
+  infos: ExperienceInfo;
   isExpanded: boolean;
 }
 
 interface locationWebsiteProps {
-  location: string;
-  companyWebsite: string;
+  location?: string;
+  companyWebsite?: string;
 }
 
 interface skillsProps {
@@ -140,48 +125,50 @@ function Skills({ skills }: skillsProps) {
   );
 }
 
-function ExperienceAccordionSummary({ info, onClick }: accordionSummaryProps) {
+function ExperienceAccordionSummary({ infos, onClick }: accordionSummaryProps) {
   return (
     <StyledAccordionSummary onClick={onClick}>
       <h3>
-        {info.current ? (
+        {infos.current ? (
           <strong>
-            {info.jobTitle} @ {info.companyName}
+            {infos.title} @ {infos.company}
           </strong>
         ) : (
-          `${info.jobTitle} @ ${info.companyName}`
+          `${infos.title} @ ${infos.company}`
         )}
       </h3>
       <Box style={{ flexGrow: 1 }} />
-      <h3>{info.date}</h3>
+      <h3>{infos.dates}</h3>
     </StyledAccordionSummary>
   );
 }
 
 function ExperienceAccordionDetails({
-  info,
+  infos,
   isExpanded,
 }: accordionDetailsProps) {
+  const logo = process.env.PUBLIC_URL + infos.logo;
+
   return (
     <AccordionDetails isActive={isExpanded}>
       <ContentContainer>
         <div style={{ flex: 3 }}>
           <LocationAndWebsite
-            location={info.location}
-            companyWebsite={info.companyWebsite}
+            location={infos.location}
+            companyWebsite={infos.website}
           />
-          <JobDescriptionContainer>{info.description}</JobDescriptionContainer>
+          <JobDescriptionContainer>{infos.description}</JobDescriptionContainer>
         </div>
-        {info.companyLogo && (
-          <CompanyLogo src={info.companyLogo} alt={info.companyLogo} />
+        {infos.logo && (
+          <CompanyLogo src={logo} alt={logo} />
         )}
       </ContentContainer>
-      <Skills skills={info.skills} />
+      {infos.skills && <Skills skills={infos.skills} />}
     </AccordionDetails>
   );
 }
 
-function ExperienceAccordionItem2({ info }: accordionItemProps) {
+function ExperienceAccordionItem({ infos }: accordionItemProps) {
   const [isExpanded, setExpanded] = useState(false);
 
   const onClickHandler = () => {
@@ -190,53 +177,30 @@ function ExperienceAccordionItem2({ info }: accordionItemProps) {
 
   return (
     <div>
-      <ExperienceAccordionSummary info={info} onClick={onClickHandler} />
-      <ExperienceAccordionDetails info={info} isExpanded={isExpanded} />
+      <ExperienceAccordionSummary infos={infos} onClick={onClickHandler} />
+      <ExperienceAccordionDetails infos={infos} isExpanded={isExpanded} />
     </div>
   );
 }
 
-function ExperienceAccordion({ infos }: accordionProps) {
+function ExperienceAccordion() {
+  const experiences = useContext(AppContext).experiences;
+
   return (
     <AccordionStyled>
-      {infos.map((info) => {
-        return <ExperienceAccordionItem2 info={info} />;
+      {experiences.map((exp) => {
+        return <ExperienceAccordionItem infos={exp} />;
       })}
     </AccordionStyled>
   );
 }
 
 function Experiences({ innerRef }: labeledSectionProps) {
-  const lorem =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  const obj: ExperienceInfo = {
-    current: true,
-    jobTitle: "SWE",
-    companyName: "Google",
-    date: "Sep 2022 - Jun 2022",
-    description: lorem,
-    location: "Brussels, Belgium",
-    companyWebsite: "google.com",
-    companyLogo: amazonLogo,
-    skills: ["C++", "C", "TypeScript", "Python", "Python", "Python", "Python"],
-  };
-  const obj2: ExperienceInfo = {
-    current: false,
-    jobTitle: "SWE",
-    companyName: "AMZN",
-    date: "Sep 2022 - Jun 2022",
-    description: lorem,
-    location: "Brussels, Belgium",
-    companyWebsite: "https://google.com",
-    companyLogo: "../images/amazon-logo.png",
-    skills: ["C++", "C", "TypeScript", "Python"],
-  };
-
   return (
     <Section innerRef={innerRef}>
       <Container>
         <h1>Experiences</h1>
-        <ExperienceAccordion infos={[obj, obj2, obj]} />
+        <ExperienceAccordion />
       </Container>
     </Section>
   );

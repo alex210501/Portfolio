@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
 import appleMemoji from "../images/memoji-apple-laptop.png";
 import Section, { labeledSectionProps } from "./Sections";
+import { AppContext } from "../utils/Context";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -34,17 +36,17 @@ const StyledName = styled.strong`
 `;
 
 function Presentation() {
+  const home = useContext(AppContext).home;
+
   return (
     <StyledPresentation>
       <StyledPresentationText>Hi,</StyledPresentationText>
       <StyledPresentationText>
-        My name is <StyledName>Alejandro</StyledName>
+        My name is <StyledName>{home.name}</StyledName>
       </StyledPresentationText>
-      <StyledPresentationText>
-        Software Engineer @ Datadog
-      </StyledPresentationText>
+      <StyledPresentationText>{home.currentPosition}</StyledPresentationText>
       <StyledPresentationSpecialization>
-        Embedded Systems | Distributed Systems | Backend
+        {home.specialization}
       </StyledPresentationSpecialization>
     </StyledPresentation>
   );

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 import SkillBox from "../components/SkillBox";
 import Section, { labeledSectionProps } from "./Sections";
-
-const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+import { useContext } from "react";
+import { AppContext } from "../utils/Context";
 
 const Container = styled.div`
   width: 80%;
@@ -11,11 +11,11 @@ const Container = styled.div`
 `;
 
 const AboutDescriptionContainer = styled.div`
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4em;
-    text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4em;
+  text-align: center;
 `;
 
 const SkillBoxContainer = styled.div`
@@ -30,32 +30,27 @@ const SkillBoxContainer = styled.div`
 `;
 
 export default function About({ innerRef }: labeledSectionProps) {
+  const about = useContext(AppContext).about;
+
   return (
     <Section innerRef={innerRef}>
       <Container>
         <AboutDescriptionContainer>
           <h1>About me</h1>
-          <p>{dummyText}</p>
+          <p>{about.description}</p>
         </AboutDescriptionContainer>
         <SkillBoxContainer>
-          <SkillBox
-            title="Software Engineering"
-            description={dummyText}
-            subtitle="Dev tools"
-            skills={["A", "A", "A"]}
-          />
-          <SkillBox
-            title="Software Engineering 2"
-            description={dummyText}
-            subtitle="Dev tools"
-            skills={["A", "A", "A", "B"]}
-          />
-          <SkillBox
-            title="Software Engineering 2"
-            description={dummyText}
-            subtitle="Dev tools"
-            skills={["A", "A", "A", "B"]}
-          />
+          {about.skillbox &&
+            about.skillbox.map((sk) => {
+              return (
+                <SkillBox
+                  title={sk.title}
+                  description={sk.description}
+                  subtitle={sk.subtitle}
+                  skills={sk.skills}
+                />
+              );
+            })}
         </SkillBoxContainer>
       </Container>
     </Section>

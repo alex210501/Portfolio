@@ -1,8 +1,10 @@
 import { Button } from "@mui/material";
+import { useContext } from "react";
 import styled from "styled-components";
 
 import Credits from "./Credits";
 import Section, { labeledSectionProps } from "./Sections";
+import { AppContext } from "../utils/Context";
 
 const Container = styled.div`
     display: flex;
@@ -30,19 +32,16 @@ const ContactTextButton = styled.div`
     text-align: center;
 `;
 
-const email = "testemail@gmail.com";
-const contactText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ";
-
 export default function Contact({ innerRef }: labeledSectionProps) {
-    console.log(innerRef);
+    const infos = useContext(AppContext);
 
     return (
         <Section innerRef={innerRef}>
             <Container>
                 <ContactTitle>Stay in touch</ContactTitle>
                 <ContactTextButton>
-                    <h2>{contactText}</h2>
-                    <Button variant="outlined" size="large" href={`mailto:${email}`}>Contact me 👋</Button>
+                    <h2>{infos.contact.text}</h2>
+                    <Button variant="outlined" size="large" href={`mailto:${infos.email}`}>Contact me 👋</Button>
                 </ContactTextButton>
                 <Credits />
             </Container>
