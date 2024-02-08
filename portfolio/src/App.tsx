@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import "./App.css";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
-import Credits from "./sections/Credits";
 import Experiences from "./sections/Experiences";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import HomeAppBar from "./components/HomeAppBar";
@@ -31,7 +30,6 @@ function App() {
         <About innerRef={aboutSectionRef} />
         <Experiences innerRef={experiencesSectionRef} />
         <Contact innerRef={contactSectionRef} />
-        <Credits />
       </ThemeProvider>
     </div>
   );

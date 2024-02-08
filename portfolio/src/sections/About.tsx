@@ -3,11 +3,19 @@ import styled from "styled-components";
 import SkillBox from "../components/SkillBox";
 import Section, { labeledSectionProps } from "./Sections";
 
-const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
 const Container = styled.div`
   width: 80%;
   margin: auto;
+`;
+
+const AboutDescriptionContainer = styled.div`
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4em;
+    text-align: center;
 `;
 
 const SkillBoxContainer = styled.div`
@@ -25,10 +33,10 @@ export default function About({ innerRef }: labeledSectionProps) {
   return (
     <Section innerRef={innerRef}>
       <Container>
-        <div style={{ marginBottom: "5em" }}>
+        <AboutDescriptionContainer>
           <h1>About me</h1>
           <p>{dummyText}</p>
-        </div>
+        </AboutDescriptionContainer>
         <SkillBoxContainer>
           <SkillBox
             title="Software Engineering"

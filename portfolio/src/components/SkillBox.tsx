@@ -20,6 +20,10 @@ const SkillListTitle = styled.h3`
 
 `;
 
+const SkillEnumerationContainer = styled.div`
+    text-align: center;
+`
+
 interface SkillsList {
     subtitle: string;
     skills: string[];
@@ -35,10 +39,10 @@ interface SkillsEnumeration {
 // TODO - Create interface
 function SkillEnumeration({ subtitle, skills }: SkillsList) {
     return (
-        <div>
+        <SkillEnumerationContainer>
             <SkillListTitle>{subtitle}</SkillListTitle>
             {skills.map((skill) => {return <p>{skill}</p>})}
-        </div>
+        </SkillEnumerationContainer>
     );
 }
 

@@ -23,6 +23,10 @@ const AccordionSummaryStyled = styled.div`
   border-radius: 1em;
   padding: 0.5em;
   background: ${({ theme }) => theme.colors.experienceSummary};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const AccordionContentStyled = styled.div<{ height: string }>`
