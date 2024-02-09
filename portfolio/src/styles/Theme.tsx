@@ -13,16 +13,17 @@ const colors = {
 
 export const darkTheme = {
   colors: {
-    background: '#0e0f18',
-    primary: colors.cantaloupe,
+    background: '#141d26', // '#0e0f18',
+    primary: colors.orange,
     strongText: colors.white,
     homeName: colors.orange,
     text: colors.white,
-    appBar: '#24225d',
+    appBar: '#31304D', // '#24225d',
     chip: colors.cantaloupe,
-    experienceSummary: '#24225d',
-    experienceDetails: colors.earlyBirdPurple,
+    experienceSummary: '#31304D', //, '#24225d',
+    experienceDetails: "#7B2CBF",
     infoBlock: colors.infoBlock,
     infoBorder: colors.infoBorder,
+    link: "#A9A9A9",
   }
 };

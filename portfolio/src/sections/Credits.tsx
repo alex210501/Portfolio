@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Link } from "@mui/material";
 
 const LinkContainer = styled.div`
   font-size: 1em;
@@ -11,9 +10,9 @@ const LinkContainer = styled.div`
 export default function Credits({ className }: { className?: string }) {
   return (
     <LinkContainer className={className}>
-      <Link href="https://github.com/alex210501/Portfolio">
-      Design & Built by Alejandro
-      </Link>
+      <a href="https://github.com/alex210501/Portfolio">
+        <p>Design & Built by Alejandro</p>
+      </a>
     </LinkContainer>
   );
 }

@@ -13,8 +13,13 @@ interface NavigationBarProps {
 const StyledLink = styled.h2`
   margin: auto;
   margin-right: 30px;
+  padding: 0.4em;
+  font-size: 1.2em;
+  border-radius: 0.5em;
+  transition: background 0.5s;
 
   &:hover {
+    background: ${({ theme }) => theme.colors.primary};
     cursor: pointer;
   }
 `;

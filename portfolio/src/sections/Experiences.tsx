@@ -65,6 +65,7 @@ const LocationWebsiteContainer = styled.div`
 const JobDescriptionContainer = styled.p`
   text-align: justify;
   margin-bottom: 1em;
+  margin-top: 0;
 `;
 
 const SkillsContainer = styled.div`
@@ -95,6 +96,19 @@ const StyledChip = styled(Chip)`
   background-color: ${({ theme }) => theme.colors.chip};
 `;
 
+const Location = styled.p`
+  color: ${({ theme }) => theme.colors.link};
+`;
+
+const WebsiteContainer = styled.a`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledIcon = styled(Icon)`
+  color: ${({ theme }) => theme.colors.link};
+`;
+
 function LocationAndWebsite({
   location,
   companyWebsite,
@@ -102,14 +116,17 @@ function LocationAndWebsite({
   return (
     <div>
       <LocationWebsiteContainer>
-        <Icon sx={{ mr: "0.2em" }}>
+        <StyledIcon sx={{ mr: "0.2em" }}>
           <LocationOnOutlined />
-        </Icon>
-        <p>{location}</p>
-        <Icon sx={{ ml: "0.5em", mr: "0.2em" }}>
-          <ArrowOutward />
-        </Icon>
-        <Link href={`https://${companyWebsite}`}>{companyWebsite}</Link>
+        </StyledIcon>
+        <Location>{location}</Location>
+
+        <WebsiteContainer href={`https://${companyWebsite}`}>
+          <StyledIcon sx={{ ml: "0.5em", mr: "0.2em" }}>
+            <ArrowOutward />
+          </StyledIcon>
+          <p>{companyWebsite}</p>
+        </WebsiteContainer>
       </LocationWebsiteContainer>
     </div>
   );
@@ -159,9 +176,7 @@ function ExperienceAccordionDetails({
           />
           <JobDescriptionContainer>{infos.description}</JobDescriptionContainer>
         </div>
-        {infos.logo && (
-          <CompanyLogo src={logo} alt={logo} />
-        )}
+        {infos.logo && <CompanyLogo src={logo} alt={logo} />}
       </ContentContainer>
       {infos.skills && <Skills skills={infos.skills} />}
     </AccordionDetails>

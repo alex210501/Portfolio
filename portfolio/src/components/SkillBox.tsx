@@ -7,18 +7,30 @@ const SkillContent = styled.div`
   padding: 1em;
   border: 1px solid #e3dbdb;
   border-radius: 0.5em;
-  box-shadow: 5px 10px 18px #e3dbdb;
+  box-shadow: 3px 3px 10px gray;
+`;
+
+const TitleDescriptionContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  margin-top: 1em;
+  justify-content: center;
 `;
 
 const SkillTitle = styled.h2`
   font-weight: bold;
+  margin: 0;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const SkillDescription = styled.p`
   text-align: justify;
 `;
 
-const SkillListTitle = styled.h3``;
+const SkillListTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.primary};
+`;
 
 const SkillEnumerationContainer = styled.div`
   text-align: center;
@@ -48,10 +60,10 @@ export default function SkillBox({
 }: SkillBoxInfo) {
   return (
     <SkillContent>
-      <div style={{ marginBottom: "2em" }}>
+      <TitleDescriptionContainer>
         <SkillTitle>{title}</SkillTitle>
         <SkillDescription>{description}</SkillDescription>
-      </div>
+      </TitleDescriptionContainer>
       {subtitle && skills && (
         <SkillEnumeration subtitle={subtitle} skills={skills} />
       )}
