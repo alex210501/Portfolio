@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import appleMemoji from "../images/memoji-apple-laptop.png";
 import Section, { labeledSectionProps } from "./Sections";
@@ -50,6 +51,11 @@ const ContactLinkContainer = styled.div`
   display: flex;
   flex-flow: column;
   gap: 1em;
+
+  & p {
+    font-size: 1.5em;
+    margin: 0;
+  }
 `;
 
 const ContactLinkRow = styled.div`
@@ -71,8 +77,8 @@ function ContactLink({
   return (
     <ContactLinkRow>
       <StyledIcon>{children}</StyledIcon>
-      <a href={href} style={{ margin: 0 }}>
-        <p style={{ margin: 0 }}>{label}</p>
+      <a href={href}>
+        <p>{label}</p>
       </a>
     </ContactLinkRow>
   );
@@ -95,16 +101,13 @@ function Presentation() {
         </StyledPresentationSpecialization>
       </div>
       <ContactLinkContainer>
-        <ContactLink
-          href={`https://linkedin.com/in/${data.linkedin}`}
-          label={data.linkedin}
-        >
+      <ContactLink href={`mailto:${data.email}`} label="Email">
+        <EmailRoundedIcon />
+      </ContactLink>
+        <ContactLink href={data.linkedin} label="LinkedIn">
           <LinkedInIcon />
         </ContactLink>
-        <ContactLink
-          href={`https://github.com/${data.github}`}
-          label={data.github}
-        >
+        <ContactLink href={data.github} label="GitHub">
           <GitHubIcon />
         </ContactLink>
       </ContactLinkContainer>

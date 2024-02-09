@@ -12,8 +12,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
+    text-decoration: none;
+
     & p {
-        text-decoration: underline ${({ theme }) => theme.colors.link};
+        text-decoration: none;
         color: ${({ theme }) => theme.colors.link};
     }
 
