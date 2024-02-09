@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 import appleMemoji from "../images/memoji-apple-laptop.png";
 import Section, { labeledSectionProps } from "./Sections";
 import { AppContext } from "../utils/Context";
+import { Icon } from "@mui/material";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -19,6 +22,9 @@ const StyledContainer = styled.div`
 
 const StyledPresentation = styled.div`
   text-align: left;
+  display: flex;
+  flex-flow: column;
+  gap: 3em;
 `;
 
 const StyledPresentationText = styled.h1`
@@ -35,19 +41,73 @@ const StyledName = styled.strong`
   color: ${({ theme }) => theme.colors.homeName};
 `;
 
+const StyledIcon = styled(Icon)`
+  color: white;
+  scale: 1.2;
+`;
+
+const ContactLinkContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+`;
+
+const ContactLinkRow = styled.div`
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 1em;
+`;
+
+function ContactLink({
+  children,
+  href,
+  label,
+}: {
+  children: React.ReactNode;
+  href: string;
+  label: string;
+}) {
+  return (
+    <ContactLinkRow>
+      <StyledIcon>{children}</StyledIcon>
+      <a href={href} style={{ margin: 0 }}>
+        <p style={{ margin: 0 }}>{label}</p>
+      </a>
+    </ContactLinkRow>
+  );
+}
+
 function Presentation() {
-  const home = useContext(AppContext).home;
+  const data = useContext(AppContext);
+  const home = data.home;
 
   return (
     <StyledPresentation>
-      <StyledPresentationText>Hi,</StyledPresentationText>
-      <StyledPresentationText>
-        My name is <StyledName>{home.name}</StyledName>
-      </StyledPresentationText>
-      <StyledPresentationText>{home.currentPosition}</StyledPresentationText>
-      <StyledPresentationSpecialization>
-        {home.specialization}
-      </StyledPresentationSpecialization>
+      <div>
+        <StyledPresentationText>Hi,</StyledPresentationText>
+        <StyledPresentationText>
+          My name is <StyledName>{home.name}</StyledName>
+        </StyledPresentationText>
+        <StyledPresentationText>{home.currentPosition}</StyledPresentationText>
+        <StyledPresentationSpecialization>
+          {home.specialization}
+        </StyledPresentationSpecialization>
+      </div>
+      <ContactLinkContainer>
+        <ContactLink
+          href={`https://linkedin.com/in/${data.linkedin}`}
+          label={data.linkedin}
+        >
+          <LinkedInIcon />
+        </ContactLink>
+        <ContactLink
+          href={`https://github.com/${data.github}`}
+          label={data.github}
+        >
+          <GitHubIcon />
+        </ContactLink>
+      </ContactLinkContainer>
     </StyledPresentation>
   );
 }
