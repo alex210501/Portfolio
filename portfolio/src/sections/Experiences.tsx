@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box, Chip, Icon, Link } from "@mui/material";
+import { Box, Icon } from "@mui/material";
 import { ArrowOutward, LocationOnOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 
@@ -10,6 +10,7 @@ import {
   AccordionSummary,
 } from "../components/Accordion";
 import { AppContext } from "../utils/Context";
+import Chip from "../components/Chip";
 import { ExperienceInfo } from "../utils/ConfigLoader";
 
 // Define the type for the callback function
