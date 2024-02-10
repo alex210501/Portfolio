@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import infoLogo from "../images/info-logo.png";
-import { Message } from "@mui/icons-material";
 
 interface infoBannerProps {
     message: string;

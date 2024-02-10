@@ -38,6 +38,7 @@ export interface Config {
   email: string;
   linkedin: string;
   github: string;
+  resume: string;
   home: HomeInfo;
   about: AboutInfo;
   experiences: ExperienceInfo[];

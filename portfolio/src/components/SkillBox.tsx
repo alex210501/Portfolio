@@ -25,7 +25,7 @@ const SkillTitle = styled.h2`
 `;
 
 const SkillDescription = styled.p`
-  text-align: justify;
+  text-align: center;
 `;
 
 const SkillListTitle = styled.h3`

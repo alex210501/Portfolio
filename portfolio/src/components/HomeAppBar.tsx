@@ -1,7 +1,8 @@
-import React from "react";
-import styled, { useTheme } from "styled-components";
+import React, { useContext } from "react";
+import styled from "styled-components";
 
 import AppBarAvatar from "./AppBarAvatar";
+import { AppContext } from "../utils/Context";
 
 interface NavigationBarProps {
   homeSectionRef: React.RefObject<HTMLDivElement>;
@@ -30,7 +31,7 @@ const StyledToolbar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: ${({ theme }) => theme.colors.appBar};;
+  background: ${({ theme }) => theme.colors.appBar};
   z-index: 10;
 `;
 
@@ -45,7 +46,7 @@ function HomeAppBar({
   experiencesSectionRef,
   contactSectionRef,
 }: NavigationBarProps) {
-    console.log(useTheme());
+  const data = useContext(AppContext);
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
@@ -53,21 +54,21 @@ function HomeAppBar({
   };
 
   return (
-      <StyledToolbar>
-        <AppBarAvatar onClick={() => scrollToSection(homeSectionRef)} />
-        <SectionNav>
-          <StyledLink onClick={() => scrollToSection(aboutSectionRef)}>
-            About
-          </StyledLink>
-          <StyledLink onClick={() => scrollToSection(experiencesSectionRef)}>
-            Experiences
-          </StyledLink>
-          <StyledLink onClick={() => scrollToSection(contactSectionRef)}>
-            Contact
-          </StyledLink>
-          <StyledLink>Resume</StyledLink>
-        </SectionNav>
-      </StyledToolbar>
+    <StyledToolbar>
+      <AppBarAvatar onClick={() => scrollToSection(homeSectionRef)} />
+      <SectionNav>
+        <StyledLink onClick={() => scrollToSection(aboutSectionRef)}>
+          About
+        </StyledLink>
+        <StyledLink onClick={() => scrollToSection(experiencesSectionRef)}>
+          Experiences
+        </StyledLink>
+        <StyledLink onClick={() => scrollToSection(contactSectionRef)}>
+          Contact
+        </StyledLink>
+        <StyledLink onClick={() => window.open(data.resume)}>Resume</StyledLink>
+      </SectionNav>
+    </StyledToolbar>
   );
 }
 
