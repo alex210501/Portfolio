@@ -136,3 +136,4 @@ dist
 cfg/
 public/images/
 build/
+deploy.js
