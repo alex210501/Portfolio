@@ -16,10 +16,6 @@ import { ExperienceInfo } from "../utils/ConfigLoader";
 // Define the type for the callback function
 type OnClickCallback = () => void;
 
-interface accordionItemProps {
-  infos: ExperienceInfo;
-}
-
 interface accordionSummaryProps {
   infos: ExperienceInfo;
   onClick: OnClickCallback;
@@ -41,12 +37,13 @@ interface skillsProps {
 
 const AccordionStyled = styled(Accordion)`
   width: 60%;
+  padding: 0;
   margin-bottom: 1em;
   border: 0;
 `;
 
 const StyledAccordionSummary = styled(AccordionSummary)`
-  border-radius: 1em;
+  border-radius: 0.7em;
   display: flex;
 `;
 
@@ -60,6 +57,7 @@ const Container = styled.div`
 
 const ExperienceTitle = styled.p`
   font-size: ${({ theme }) => theme.fonts.experienceTitle};
+  margin: 0.2em;
 `;
 
 const LocationWebsiteContainer = styled.div`
@@ -132,7 +130,6 @@ function LocationAndWebsite({
           <LocationOnOutlined />
         </StyledIcon>
         <LocationWebsiteStyled>{location}</LocationWebsiteStyled>
-
         <WebsiteContainer href={`https://${companyWebsite}`}>
           <StyledIcon sx={{ ml: "0.5em", mr: "0.2em" }}>
             <ArrowOutward />
@@ -197,28 +194,26 @@ function ExperienceAccordionDetails({
   );
 }
 
-function ExperienceAccordionItem({ infos }: accordionItemProps) {
-  const [isExpanded, setExpanded] = useState(false);
+function ExperienceAccordion() {
+  const experiences = useContext(AppContext).experiences;
+  const [panel, setPanel] = useState(-1);
 
-  const onClickHandler = () => {
-    setExpanded(isExpanded ? false : true);
+  const onClickHandler = (index: number) => {
+    setPanel(panel === index ? -1 : index);
   };
 
   return (
-    <div>
-      <ExperienceAccordionSummary infos={infos} onClick={onClickHandler} />
-      <ExperienceAccordionDetails infos={infos} isExpanded={isExpanded} />
-    </div>
-  );
-}
-
-function ExperienceAccordion() {
-  const experiences = useContext(AppContext).experiences;
-
-  return (
     <AccordionStyled>
-      {experiences.map((exp) => {
-        return <ExperienceAccordionItem infos={exp} />;
+      {experiences.map((exp, index) => {
+        return (
+          <div>
+            <ExperienceAccordionSummary
+              infos={exp}
+              onClick={() => onClickHandler(index)}
+            />
+            <ExperienceAccordionDetails infos={exp} isExpanded={panel === index} />
+          </div>
+        );
       })}
     </AccordionStyled>
   );
