@@ -1,10 +1,11 @@
+import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
 
 import infoLogo from "../images/info-logo.png";
 
 interface infoBannerProps {
-    message: string;
-    onClick: () => void;
+  message: string;
+  onClick: () => void;
 }
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.infoBlock};
   border: 0.2em solid ${({ theme }) => theme.colors.infoBorder};
   border-radius: 1em;
-  padding: 0.2em 1.0em 0.2em 1.0em;
+  padding: 0.2em 1em 0.2em 1em;
 `;
 
 const MessageContainer = styled.div`
@@ -36,15 +37,10 @@ const LogoImage = styled.img`
   margin-right: 1em;
 `;
 
-const CloseBannerContainer = styled.div`
+const StyledCloseIcon = styled(CloseIcon)`
   width: 1em;
-  height: 1em;
-  text-align: center;
   border-radius: 0.2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.3em;
+  color: ${({ theme }) => theme.colors.infoCross};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.infoBorder};
@@ -60,9 +56,7 @@ export default function InfoBanner({ message, onClick }: infoBannerProps) {
         <LogoImage src={infoLogo} alt={infoLogo} />
         <p>{message}</p>
       </MessageContainer>
-      <CloseBannerContainer onClick={onClick}>
-        <p>X</p>
-      </CloseBannerContainer>
+      <StyledCloseIcon onClick={onClick} />
     </Container>
   );
 }

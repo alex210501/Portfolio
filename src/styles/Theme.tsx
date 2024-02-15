@@ -9,6 +9,7 @@ const colors = {
   blackPearl: '#151e27',
   infoBlock: '#00549d',
   infoBorder: '#89b9e8',
+  silverChalice: '#A9A9A9',
 };
 
 export const darkTheme = {
@@ -24,7 +25,8 @@ export const darkTheme = {
     experienceDetails: "#7B2CBF",
     infoBlock: colors.infoBlock,
     infoBorder: colors.infoBorder,
-    link: "#A9A9A9",
+    link: colors.silverChalice,
+    infoCross: colors.silverChalice,
   },
   fonts: {
     h1: '3em',
