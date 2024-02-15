@@ -58,6 +58,10 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const ExperienceTitle = styled.p`
+  font-size: ${({ theme }) => theme.fonts.experienceTitle};
+`;
+
 const LocationWebsiteContainer = styled.div`
   display: flex;
   align-items: center;
@@ -67,6 +71,7 @@ const JobDescriptionContainer = styled.p`
   text-align: justify;
   margin-bottom: 1em;
   margin-top: 0;
+  font-size: ${({ theme }) => theme.fonts.experienceDescription};
 `;
 
 const SkillsContainer = styled.div`
@@ -102,10 +107,6 @@ const StyledChip = styled(Chip)`
   background-color: ${({ theme }) => theme.colors.chip};
 `;
 
-const Location = styled.p`
-  color: ${({ theme }) => theme.colors.link};
-`;
-
 const WebsiteContainer = styled.a`
   display: flex;
   align-items: center;
@@ -113,6 +114,11 @@ const WebsiteContainer = styled.a`
 
 const StyledIcon = styled(Icon)`
   color: ${({ theme }) => theme.colors.link};
+`;
+
+const LocationWebsiteStyled = styled.p`
+  color: ${({ theme }) => theme.colors.link};
+  font-size: ${({ theme }) => theme.fonts.experienceLocationWebsite};
 `;
 
 function LocationAndWebsite({
@@ -125,13 +131,13 @@ function LocationAndWebsite({
         <StyledIcon sx={{ mr: "0.2em" }}>
           <LocationOnOutlined />
         </StyledIcon>
-        <Location>{location}</Location>
+        <LocationWebsiteStyled>{location}</LocationWebsiteStyled>
 
         <WebsiteContainer href={`https://${companyWebsite}`}>
           <StyledIcon sx={{ ml: "0.5em", mr: "0.2em" }}>
             <ArrowOutward />
           </StyledIcon>
-          <p>{companyWebsite}</p>
+          <LocationWebsiteStyled>{companyWebsite}</LocationWebsiteStyled>
         </WebsiteContainer>
       </LocationWebsiteContainer>
     </div>
@@ -142,7 +148,7 @@ function Skills({ skills }: skillsProps) {
   return (
     <SkillsContainer>
       {skills.map((skill) => {
-        return <StyledChip label={skill} />;
+        return <StyledChip key={skill} label={skill} />;
       })}
     </SkillsContainer>
   );
@@ -151,7 +157,7 @@ function Skills({ skills }: skillsProps) {
 function ExperienceAccordionSummary({ infos, onClick }: accordionSummaryProps) {
   return (
     <StyledAccordionSummary onClick={onClick}>
-      <h3>
+      <ExperienceTitle>
         {infos.current ? (
           <strong>
             {infos.title} @ {infos.company}
@@ -159,9 +165,9 @@ function ExperienceAccordionSummary({ infos, onClick }: accordionSummaryProps) {
         ) : (
           `${infos.title} @ ${infos.company}`
         )}
-      </h3>
+      </ExperienceTitle>
       <Box style={{ flexGrow: 1 }} />
-      <h3>{infos.dates}</h3>
+      <ExperienceTitle>{infos.dates}</ExperienceTitle>
     </StyledAccordionSummary>
   );
 }

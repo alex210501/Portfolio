@@ -16,7 +16,7 @@ const Container = styled.div`
   & p {
     opacity: 1;
     margin: 0;
-    font-size: 0.8em;
+    font-size: ${({ theme }) => theme.fonts.experienceSkillChip};
   }
 `;
 

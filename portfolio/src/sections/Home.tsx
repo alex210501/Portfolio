@@ -30,12 +30,12 @@ const StyledPresentation = styled.div`
 
 const StyledPresentationText = styled.h1`
   margin: 0;
-  font-size: 2em;
+  font-size: ${({ theme }) => theme.fonts.homePresentation};
 `;
 
 const StyledPresentationSpecialization = styled.h2`
   margin: 0;
-  font-size: 1em;
+  font-size: ${({ theme }) => theme.fonts.homePresentationSpecialization};
 `;
 
 const StyledName = styled.strong`
@@ -53,7 +53,7 @@ const ContactLinkContainer = styled.div`
   gap: 1em;
 
   & p {
-    font-size: 1.5em;
+    font-size: ${({ theme }) => theme.fonts.homeContactLink};
     margin: 0;
   }
 `;

@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.colors.background};
     font-family: "Roboto", "Montserrat", sans-serif;
+    max-width; 100%;
   }
 
   strong {
@@ -34,5 +35,17 @@ export const GlobalStyles = createGlobalStyle`
   h5,
   p {
     color: ${({ theme }) => theme.colors.text};
+  }
+
+  h1 {
+    font-size: ${({ theme }) => theme.fonts.h1};
+  }
+
+  h2 {
+    font-size: ${({ theme }) => theme.fonts.h2};
+  }
+
+  h3 {
+    font-size: ${({ theme }) => theme.fonts.h3};
   }
 `;

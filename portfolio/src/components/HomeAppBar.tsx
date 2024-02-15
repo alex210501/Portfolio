@@ -15,7 +15,7 @@ const StyledLink = styled.h2`
   margin: auto;
   margin-right: 30px;
   padding: 0.4em;
-  font-size: 1.2em;
+  font-size: ${({ theme }) => theme.fonts.homeAppBarLink};
   border-radius: 0.5em;
   transition: background 0.5s;
 
@@ -28,7 +28,6 @@ const StyledLink = styled.h2`
 const StyledToolbar = styled.div`
   top: 0;
   padding: 0.5em;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.appBar};

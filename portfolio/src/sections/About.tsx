@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AppContext } from "../utils/Context";
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   margin: auto;
 `;
 
@@ -16,6 +16,10 @@ const AboutDescriptionContainer = styled.div`
   margin-right: auto;
   margin-bottom: 4em;
   text-align: center;
+
+  & p {
+    font-size: ${({ theme }) => theme.fonts.aboutDescription};
+  }
 `;
 
 const SkillBoxContainer = styled.div`

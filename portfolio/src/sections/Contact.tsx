@@ -17,11 +17,6 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const ContactTitle = styled.h1`
-  font-size: 3em;
-  margin: 1em;
-`;
-
 const ContactTextButton = styled.div`
   display: flex;
   flex-flow: column;
@@ -43,15 +38,19 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const ContactText = styled.p`
+  font-size: ${({ theme }) => theme.fonts.contactText};
+`;
+
 export default function Contact({ innerRef }: labeledSectionProps) {
   const infos = useContext(AppContext);
 
   return (
     <Section innerRef={innerRef}>
       <Container>
-        <ContactTitle>Stay in touch</ContactTitle>
+        <h1>Stay in touch</h1>
         <ContactTextButton>
-          <h2>{infos.contact.text}</h2>
+          <ContactText>{infos.contact.text}</ContactText>
           <StyledButton href={`mailto:${infos.email}`}>
             Contact me 👋
           </StyledButton>

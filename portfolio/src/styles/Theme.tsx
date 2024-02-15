@@ -25,5 +25,21 @@ export const darkTheme = {
     infoBlock: colors.infoBlock,
     infoBorder: colors.infoBorder,
     link: "#A9A9A9",
+  },
+  fonts: {
+    h1: '3em',
+    h2: '1em',
+    h3: '1em',
+    homeAppBarLink: '1.2em',
+    homePresentation: '2em',
+    homePresentationSpecialization: '1em',
+    homeContactLink: '1.5em',
+    aboutDescription: '1.2em',
+    skillBoxTitle: '1.2em',
+    experienceTitle: '1.2em',
+    experienceLocationWebsite: '1em',
+    experienceDescription: '1em',
+    experienceSkillChip: '0.8em',
+    contactText: '1.5em',
   }
 };

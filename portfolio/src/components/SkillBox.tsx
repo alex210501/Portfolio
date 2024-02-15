@@ -17,11 +17,12 @@ const TitleDescriptionContainer = styled.div`
   justify-content: center;
 `;
 
-const SkillTitle = styled.h2`
+const SkillTitle = styled.p`
   font-weight: bold;
   margin: 0;
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
+  font-size: ${({ theme }) => theme.fonts.skillBoxTitle};
 `;
 
 const SkillDescription = styled.p`
