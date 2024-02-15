@@ -79,18 +79,23 @@ const ContentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   padding-right: 0.5em;
   gap: 2em;
 `;
 
-const CompanyLogo = styled.img`
-  display: inline-block;
+const CompanyLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
   flex: 1;
-  object-fit: contain;
   width: 100%;
-  height: 100%;
   min-width: 100px;
+`;
+
+const CompanyLogo = styled.img`
+  width: 100%;
+  object-fit: contain;
+  margin: auto;
 `;
 
 const StyledChip = styled(Chip)`
@@ -177,7 +182,9 @@ function ExperienceAccordionDetails({
           />
           <JobDescriptionContainer>{infos.description}</JobDescriptionContainer>
         </div>
-        {infos.logo && <CompanyLogo src={logo} alt={logo} />}
+        <CompanyLogoContainer>
+          {infos.logo && <CompanyLogo src={logo} alt={logo} />}
+        </CompanyLogoContainer>
       </ContentContainer>
       {infos.skills && <Skills skills={infos.skills} />}
     </AccordionDetails>
