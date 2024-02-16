@@ -23,9 +23,11 @@ const AccordionSummaryStyled = styled.div`
   border-radius: 1em;
   padding: 0.5em;
   background: ${({ theme }) => theme.colors.experienceSummary};
+  transition: background 0.25s;
 
   &:hover {
     cursor: pointer;
+    background: ${({ theme }) => theme.colors.experienceSummaryHover};
   }
 `;
 

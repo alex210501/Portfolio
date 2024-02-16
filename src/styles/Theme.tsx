@@ -22,6 +22,7 @@ export const darkTheme = {
     appBar: '#31304D', // '#24225d',
     chip: colors.cantaloupe,
     experienceSummary: '#31304D', //, '#24225d',
+    experienceSummaryHover: '#5F5E84',
     experienceDetails: "#7B2CBF",
     infoBlock: colors.infoBlock,
     infoBorder: colors.infoBorder,
