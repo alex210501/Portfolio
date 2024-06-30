@@ -13,7 +13,7 @@ import Home from "./sections/Home";
 import { darkTheme } from "./styles/Theme";
 import InfoBanner from "./components/InfoBanner";
 
-const inDevelopment = true;
+const inDevelopment = false;
 const inDevelopmentMessage = "This website is currently under development.";
 
 function App() {

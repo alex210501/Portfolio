@@ -3,7 +3,7 @@ import { exec } from "node:child_process";
 const cfg = require("./cfg/deploy.json");
 
 const buildReactCommand = "npm run build";
-const deployS3BucketCommand = `aws s3 cp ./build ${cfg.s3Bucket} --recursive`;
+const deployS3BucketCommand = `aws s3 cp ./build ${cfg.s3Bucket} --profile ${cfg.awsProfile} --recursive`;
 
 function execCommand(command: string, callback?: () => any) {
   exec(command, (err, stdout) => {
